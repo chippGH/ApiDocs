@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #351e05;
+}
+
+.main {
+    display: flex;
+    height: 100%;
+    min-height: 100vh;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.documentation-tree ul {
+  list-style-type: none;
+}
+
+.sidebar {
+    width: 20%;
+    padding: 1vh;
+    border-right: solid 3px black;
+}
+
+.documentation-tree {
+    width: 100%;
+    position: sticky;
+    top: 1vh;
+}
+
+.content {
+    width: 75%;
+    background-color: #5c3d27;
+    color: #ecccbc;
+    padding: 10px;
+}
+
+.content pre {
+    font-size: 1rem;
+    margin-top: 1rem;
+    border-left: solid gray;
+}
+
+.tip {
+    border-radius: 2vh;
+    border: solid 0.3vh #181833;
+    background-color: #221406;
+    color: white;
+    padding: 2vh;
+    margin-top: 1vh;
+    font-size: 1.2rem;
+}
+
+.documentation-tree .tree-caret::before {
+    content: "\25B6";
+    color: white;
+    display: inline-block;
+    margin-left: -20px;
+    transition: 0.2s;
+}
+.documentation-tree .tree-caret.opened::before {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  transform: rotate(90deg);
+}
+
+.documentation-tree .tree-node-title {
+    color: #f2d2a5;
+    font-size: 1.5rem;
+    text-decoration: underline dotted;
+}
+
+.documentation-tree .tree-node-title.opened {
+    color: #ffbc5e;
+}
+
+.documentation-tree .tree-node {
+    padding-left: 20px;
+    display: none;
+}
+
+.documentation-tree .active {
+    display: block;
+}
+
+.language-selector {
+    width: 5%;
+}
+.language-selector .language-selector-buttons {
+    position: sticky;
+    top: 1vh;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    padding-left: 1vmin;
+}
+.language-selector .language-selector-buttons button {
+    width: 70%;
+    height: 5vh;
+    font-size: 1rem;
+    font-weight: bold;
+    min-width: max-content;
+    min-height: max-content;
+    color: white;
+    background-color: #9a6644;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1vh;
+    border: 1px solid #351e05;
+    border-radius: 1vh;
+    display: block;
+    padding: 1vmin;
+    text-align: center;
+    transition-duration: 0.2s;
+}
+
+.language-selector .language-selector-buttons button.active {
+    background-color: #c5845a;
+}
+.language-selector .language-selector-buttons button:active {
+    background-color: #81563b;
+}
+
+.hljs-ln-n {
+    margin-right: .2vw;
+    padding-right: .2vw;
+    border-right: .15vw solid #333;
+}
+
+div[id$='-code'] {
+    display: none;
+    position: relative;
+}
+
+div[id$='-code'].active {
+    display: block;
+}
+
+.copy-tooltip {
+    position: absolute;
+    right: .7vmax;
+    top: .5vmax;
+}
+
+.copy-code-button {
+    height: auto;
+    width: auto;
+    font-size: 1vmax;
+    padding-left: .2vmax;
+    padding-right: .2vmax;
+    padding-bottom: .2vmax;
+    background-color: #2b2b2b;
+    color: #ecccbc;
+    border: #777 solid .1vmax;
+    border-radius: .5vmax;
+    opacity: 0.2;
+    transition: opacity .1s;
+}
+
+.copy-code-button:hover {
+    opacity: 1;
+}
+.copy-code-button:active {
+    opacity: 0.6;
+}
+
+.copy-tooltip .copy-tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    top: -1.4vmax;
+    left: -1.4vmax;
+    right: -1.4vmax;
+    padding: .1vmax;
+    background-color: #555;
+    border-radius: .2vmax;
+    color: white;
+    font-size: 0.7vmax;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.copy-tooltip .copy-tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -0.3vmax;
+    border-width: 0.3vmax;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.copy-tooltip:hover .copy-tooltip-text {
+    opacity: 1;
+    visibility: visible;
+}

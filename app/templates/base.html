@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='js/highlight.js/styles/base16/woodland.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/default-documentation.css') }}">
+    {% if title %}
+        <title>{{ title }} - apidoc</title>
+    {% else %}
+        <title>ApiDocs</title>
+    {% endif %}
+</head>
+<body>
+<div class="main">
+    {% include 'sidebar.html' %}
+    <div class="content">
+        {% block content %}
+            content
+        {% endblock %}
+    </div>
+    {% include 'language_selector.html' %}
+</div>
+</body>
+<script src="{{ url_for('static', filename='js/jquery/jquery-3.7.0.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/documentation-tree.js') }}"></script>
+<script src="{{ url_for('static', filename='js/language-select.js') }}"></script>
+<script src="{{ url_for('static', filename='js/highlight.js/highlight.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/highlight.js/highlightjs-line-numbers.min.js') }}"></script>
+<script>
+    hljs.configure({tabReplace: '    '})
+    hljs.highlightAll();
+    hljs.initLineNumbersOnLoad();
+</script>
+</html>

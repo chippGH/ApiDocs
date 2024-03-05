@@ -1,0 +1,68 @@
+<h1>Система непересекающихся множеств</h1>
+<br>
+<hr><br>
+<h2>Реализация системы непересекающихся множеств</h2>
+<div id="cs-code" title="C#">
+    <pre class="language-csharp"><code>struct DSU
+{
+    private int[] _p;
+    private int[] _r;
+
+    public DSU(int num)
+    {
+        _p = new int[num];
+        _r = new int[num];
+        for(int i = 0; i &lt; num; i++)
+        {
+            _p[i] = i;
+            _r[i] = 0;
+        }
+    }
+
+    public int Find(int v)
+    {
+        if (_p[v] == v) return v;
+        return _p[v] = Find(_p[v]);
+    }
+
+    public void Union(int x, int y)
+    {
+        x = Find(x); y = Find(y);
+        if (_r[x] &lt; _r[y])
+        {
+            var tmp = x;
+            x = y;
+            y = tmp;
+        }
+        _p[y] = x;
+        if (_r[x] == _r[y]) _r[x]++;
+    }
+}</code></pre>
+</div>
+<div id="cpp-code" title="C++">
+    <pre class="language-cpp"><code>struct DSU {
+    vector&lt;int&gt; p;
+    vector&lt;int&gt; r;
+
+    DSU(int num) : p(num), r(num) {
+        for (int i = 0; i &lt; num; ++i) {
+            p[i] = i;
+        }
+    }
+
+    int find(int v) {
+        if (p[v] == v) return v;
+        return p[v] = find(p[v]);
+    }
+
+    void join(int x, int y) {
+        x = find(x), y = find(y);
+        if (r[x] &lt; r[y]) swap(x, y);
+        p[y] = x;
+        if (r[x] == r[y]) r[x]++;
+    }
+};</code></pre>
+</div>
+
+
+    
